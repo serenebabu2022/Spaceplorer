@@ -18,5 +18,4 @@ root.render(
   </React.StrictMode>
 );
 
-// You can use this to log performance metrics:
 reportWebVitals();

@@ -1,6 +1,3 @@
-// src/components/Header.tsx
-import React from "react";
-
 const Header = () => {
   return (
     <header className="bg-gray-900 text-white shadow-sm">
