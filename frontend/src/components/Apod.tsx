@@ -1,30 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { fetchApod } from "../api/api";
-import { ApodData } from "../api/interfaces";
+// src/components/ApodCard.tsx
+import React from "react";
+import { ApodData } from "../types/interfaces";
 
-function Apod() {
-  const [data, setData] = useState<ApodData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchApod()
-      .then((res) => setData(res.data))
-      .catch(() => setError("Failed to load APOD"))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-  if (!data) return null;
-
+interface ApodProps extends ApodData {}
+const ApodCard: React.FC<ApodProps> = ({ title, url, explanation }) => {
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <img src={data.url} alt={data.title} style={{ maxWidth: "100%" }} />
-      <p>{data.explanation}</p>
+    <div className="text-white max-w-3xl mx-auto mt-10 px-4">
+      <h1 className="text-3xl font-bold mb-4 text-center">{title}</h1>
+      <img src={url} alt={title} className="rounded-lg w-full mb-4" />
+      <p className="text-gray-300">{explanation}</p>
     </div>
   );
-}
+};
 
-export default Apod;
+export default ApodCard;
