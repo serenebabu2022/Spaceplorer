@@ -1,4 +1,8 @@
+import React, { useState } from "react";
+
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="bg-gray-900 text-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -21,7 +25,10 @@ const Header = () => {
           </a>
         </nav>
         <div className="md:hidden">
-          <button>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
             <svg
               className="w-6 h-6"
               fill="none"
@@ -36,6 +43,22 @@ const Header = () => {
               />
             </svg>
           </button>
+          {menuOpen && (
+            <div className="md:hidden px-4 pb-4 space-y-2">
+              <a href="#" className="block text-white hover:text-blue-400">
+                Home
+              </a>
+              <a href="#" className="block text-white hover:text-blue-400">
+                About
+              </a>
+              <a href="#" className="block text-white hover:text-blue-400">
+                Features
+              </a>
+              <a href="#" className="block text-white hover:text-blue-400">
+                Contact
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </header>

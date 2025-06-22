@@ -16,7 +16,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="bg-black min-h-screen">
+    <main className="min-h-screen">
       {loading && <p className="text-center text-white">Loading...</p>}
       {error && <p className="text-center text-red-400">{error}</p>}
       {data && <ApodCard {...data} />}

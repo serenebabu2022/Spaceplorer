@@ -41,7 +41,7 @@ const ApodCard: React.FC<ApodProps> = ({ title, url, explanation, date }) => {
       <p className="mt-6 text-sm text-gray-400 text-right">📅 {date}</p>
       <div className="flex justify-center mt-8">
         <button
-          className="px-6 py-3 bg-gray-900 hover:bg-blue-700 rounded-md text-white font-semibold transition"
+          className="px-6 py-3 bg-gray-700 hover:bg-blue-900 rounded-md text-white font-semibold transition"
           onClick={handleExploreMore}
         >
           Explore More
