@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ApodData } from "../types/interfaces";
-import { fetchApod } from "../api/api";
-import ApodCard from "../components/Apod";
+import { ApodData } from "../../types/interfaces";
+import { fetchApod } from "../../api/api";
+import ApodCard from "../../components/Apod/ApodCard";
 
 const Home = () => {
   const [data, setData] = useState<ApodData | null>(null);
@@ -10,7 +10,13 @@ const Home = () => {
 
   useEffect(() => {
     fetchApod()
-      .then((res) => setData(res.data))
+      .then((res) => {
+        if (!res || !res.data) {
+          setError("No data available.");
+        } else {
+          setData(res.data);
+        }
+      })
       .catch(() => setError("Error fetching data"))
       .finally(() => setLoading(false));
   }, []);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ApodData } from "../types/interfaces";
+import { ApodData } from "../../types/interfaces";
 
 interface ApodProps extends ApodData {}
 

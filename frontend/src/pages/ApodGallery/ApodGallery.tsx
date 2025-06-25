@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { fetchApodRange } from "../api/api";
-import { ApodData } from "../types/interfaces";
-import DateFilter from "../components/DateFilter";
+import { fetchApodRange } from "../../api/api";
+import { ApodData } from "../../types/interfaces";
+import DateFilter from "../../components/DateFilter/DateFilter";
 
 interface Photo {
   date: string;
@@ -32,7 +32,12 @@ const ApodGallery = () => {
       setLoading(true);
       try {
         const res = await fetchApodRange(startStr, endStr);
-        setData(res.data);
+        if (res.data.length === 0) {
+          setError("No photos available for this date range.");
+          setData([]);
+        } else {
+          setData(res.data);
+        }
       } catch {
         setError("Failed to load recent images.");
       } finally {
