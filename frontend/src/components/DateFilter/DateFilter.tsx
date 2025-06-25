@@ -70,10 +70,11 @@ const DateFilter: React.FC<DateFilterProps> = ({
       </label>
       <button
         onClick={handleSearch}
+        name="filter"
         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
         disabled={loading}
       >
-        {loading ? "Loading..." : "Fetch"}
+        {loading ? "Loading..." : "Submit"}
       </button>
       {error && <p className="text-red-400 w-full text-center mt-2">{error}</p>}
     </div>
