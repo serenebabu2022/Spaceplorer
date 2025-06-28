@@ -4,3 +4,13 @@ export interface ApodData {
   explanation: string;
   date: string;
 }
+export interface Instrument {
+  displayName: string;
+}
+export interface IPSData {
+  activityId: string;
+  eventTime: string;
+  link: string;
+  location: string;
+  instruments: Instrument[];
+}
