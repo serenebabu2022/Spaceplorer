@@ -58,8 +58,30 @@ app.get("/api/DONKI/IPS", async (req, res) => {
 
     res.json(response.data);
   } catch (error) {
-    console.error("Error fetching APOD range:", error.message);
-    res.status(500).json({ error: "Failed to fetch APOD range" });
+    console.error("Error fetching IPS Data:", error.message);
+    res.status(500).json({ error: "Failed to fetch IPS Data" });
+  }
+});
+
+app.get("/api/DONKI/SEP", async (req, res) => {
+  const { startDate, endDate } = req.query;
+  if (!startDate || !endDate) {
+    return res.status(400).json({ error: "Start and end dates are required" });
+  }
+
+  try {
+    const response = await axios.get(`https://api.nasa.gov/DONKI/SEP?`, {
+      params: {
+        api_key: NASA_API_KEY,
+        startDate: startDate,
+        endDate: endDate,
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching SEP Data:", error.message);
+    res.status(500).json({ error: "Failed to fetch SEP Data" });
   }
 });
 

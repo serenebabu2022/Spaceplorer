@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { ApodData } from "../../types/interfaces";
 import { fetchApod } from "../../api/api";
 import ApodCard from "../../components/Apod/ApodCard";
-import Chart from "../../components/Chart/Chart";
+import IPSBarGraph from "../../components/IPSBarGraph/IPSBarGraph";
+import SEPLineChart from "../../components/SEPChart/SEPLineChart";
 
 const Home = () => {
   const [data, setData] = useState<ApodData | null>(null);
@@ -30,8 +31,13 @@ const Home = () => {
       {!loading && !error && !data && (
         <p className="text-center text-white">No data available.</p>
       )}
-      <div className="flex justify-center mt-8">
-        <Chart />
+      <div className="flex flex-col lg:flex-row justify-center items-start gap-8 mt-8">
+        <div className="flex-1 min-w-[350px]">
+          <IPSBarGraph />
+        </div>
+        <div className="flex-1 min-w-[350px]">
+          <SEPLineChart />
+        </div>
       </div>
     </main>
   );

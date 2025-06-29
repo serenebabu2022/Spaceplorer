@@ -14,3 +14,9 @@ export interface IPSData {
   location: string;
   instruments: Instrument[];
 }
+export interface SEPData {
+  sepID: string;
+  eventTime: string;
+  link: string;
+  instruments: Instrument[];
+}

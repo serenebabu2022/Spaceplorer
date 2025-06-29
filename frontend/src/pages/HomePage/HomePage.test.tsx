@@ -11,6 +11,14 @@ jest.mock("../../api/api", () => ({
 }));
 const mockFetchApod = api.fetchApod as jest.Mock;
 
+jest.mock("../../components/IPSBarGraph/IPSBarGraph", () => () => (
+  <div>Mock IPS Bar Graph</div>
+));
+
+jest.mock("../../components/SEPChart/SEPLineChart", () => () => (
+  <div>Mock SEP Line Chart</div>
+));
+
 describe("Home Component", () => {
   beforeEach(() => {
     // Reset mocks before each test
