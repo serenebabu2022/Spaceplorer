@@ -41,6 +41,27 @@ app.get("/api/apod/range", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch APOD range" });
   }
 });
+app.get("/api/DONKI/IPS", async (req, res) => {
+  const { startDate, endDate } = req.query;
+  if (!startDate || !endDate) {
+    return res.status(400).json({ error: "Start and end dates are required" });
+  }
+
+  try {
+    const response = await axios.get(`https://api.nasa.gov/DONKI/IPS?`, {
+      params: {
+        api_key: NASA_API_KEY,
+        startDate: startDate,
+        endDate: endDate,
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching APOD range:", error.message);
+    res.status(500).json({ error: "Failed to fetch APOD range" });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
