@@ -7,20 +7,20 @@ const Header = () => {
     <header className="bg-gray-900 text-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2 text-xl font-semibold">
-          🪐 <span>Space</span>
+          🌌<span>Space</span>
           <span className="text-blue-400">plorer</span>
         </div>
         <nav className="space-x-6 hidden md:block">
-          <a href="#" className="hover:text-blue-400">
+          <a href="#home" className="hover:text-blue-400">
             Home
           </a>
-          <a href="#" className="hover:text-blue-400">
+          <a href="#about" className="hover:text-blue-400">
             About
           </a>
-          <a href="#" className="hover:text-blue-400">
+          <a href="#features" className="hover:text-blue-400">
             Features
           </a>
-          <a href="#" className="hover:text-blue-400">
+          <a href="#contact" className="hover:text-blue-400">
             Contact
           </a>
         </nav>
@@ -45,16 +45,22 @@ const Header = () => {
           </button>
           {menuOpen && (
             <div className="md:hidden px-4 pb-4 space-y-2">
-              <a href="#" className="block text-white hover:text-blue-400">
+              <a href="#home" className="block text-white hover:text-blue-400">
                 Home
               </a>
-              <a href="#" className="block text-white hover:text-blue-400">
+              <a href="#about" className="block text-white hover:text-blue-400">
                 About
               </a>
-              <a href="#" className="block text-white hover:text-blue-400">
+              <a
+                href="#features"
+                className="block text-white hover:text-blue-400"
+              >
                 Features
               </a>
-              <a href="#" className="block text-white hover:text-blue-400">
+              <a
+                href="#contact"
+                className="block text-white hover:text-blue-400"
+              >
                 Contact
               </a>
             </div>

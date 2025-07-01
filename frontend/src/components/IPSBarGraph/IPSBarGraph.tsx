@@ -50,14 +50,14 @@ const IPSBarGraph = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Inter Planetory Shock</h1>
-      <p>
+      {/* <p>
         Imagine a massive ripple blasting through the solar system. That's what
         an Interplanetary Shock (IPS) is. These shockwaves are triggered by
         powerful bursts of solar energy, like solar flares or coronal mass
         ejections (CMEs), erupting from the Sun. As they barrel through space,
         they can shake up the solar wind, rattle Earth’s magnetic field, and
         sometimes lead to dazzling auroras
-      </p>
+      </p> */}
       <p>
         Check out the chart below to see data of actual IPS events captured in
         real time. The bar graph shows the number of IPS events recorded each

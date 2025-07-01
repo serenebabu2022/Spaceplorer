@@ -51,7 +51,7 @@ const SEPLineChart = () => {
       <h1 className="text-2xl font-bold mb-4">
         Solar Energetic Particle Events
       </h1>
-      <p>
+      {/* <p>
         Sometimes, the Sun throws tantrums — and when it does, it hurls out
         bursts of super-fast particles called Solar Energetic Particles (SEPs).
         These particles travel at nearly the speed of light and can zip through
@@ -59,7 +59,7 @@ const SEPLineChart = () => {
         disrupt satellites, GPS, and even airline communications. Scientists
         track these wild solar storms to help protect our tech and astronauts in
         space!
-      </p>
+      </p> */}
       <p>
         The chart below shows the number of SEP events captured by NASA's Deep
         Space Network (DSN) over the years. Each line represents the number of
