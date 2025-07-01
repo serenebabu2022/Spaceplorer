@@ -91,6 +91,7 @@ const ApodGallery = () => {
                 {photo.title}
               </h2>
             </div>
+            <p className="text-sm text-gray-400 text-right">📅 {photo.date}</p>
           </div>
         ))}
       </div>
