@@ -13,7 +13,7 @@ jest.mock("./components/IPSBarGraph/IPSBarGraph", () => () => (
   <div>Mock IPSBarGraph</div>
 ));
 
-jest.mock("./components/SEPChart/SEPLineChart", () => () => (
+jest.mock("./components/SEPLineChart/SEPLineChart", () => () => (
   <div>Mock SEPLineChart</div>
 ));
 
@@ -52,6 +52,10 @@ describe("App Component", () => {
     expect(screen.getByText(/Home/i)).toBeInTheDocument();
 
     // Wait for the APOD data to be displayed
-    expect(await screen.findByText(mockApodData.title)).toBeInTheDocument();
+    expect(
+      await screen.findByText(
+        `Today's Astronomy Picture of the Day: ${mockApodData.title}`
+      )
+    ).toBeInTheDocument();
   });
 });

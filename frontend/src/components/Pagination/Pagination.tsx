@@ -71,6 +71,7 @@ const Pagination: React.FC<PaginationProps> = ({
       {visiblePageNumbers.map((page, index) =>
         typeof page === "number" ? (
           <button
+            key={page}
             className={`px-3 py-1 rounded-md transition-colors duration-200 ${
               page === currentPage
                 ? "bg-blue-500 text-white shadow-md"
@@ -81,7 +82,9 @@ const Pagination: React.FC<PaginationProps> = ({
             {page}
           </button>
         ) : (
-          <span className="px-3 py-1 text-gray-700">{page}</span>
+          <span key={`ellipsis-${index}`} className="px-3 py-1 text-gray-700">
+            {page}
+          </span>
         )
       )}
 
