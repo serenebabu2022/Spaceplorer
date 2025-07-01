@@ -3,7 +3,7 @@ import { ApodData } from "../../types/interfaces";
 import { fetchApod } from "../../api/api";
 import ApodCard from "../../components/Apod/ApodCard";
 import IPSBarGraph from "../../components/IPSBarGraph/IPSBarGraph";
-import SEPLineChart from "../../components/SEPChart/SEPLineChart";
+import SEPLineChart from "../../components/SEPLineChart/SEPLineChart";
 import AsteroidsData from "../../components/AsteroidData/AsteroidData";
 
 const Home = () => {

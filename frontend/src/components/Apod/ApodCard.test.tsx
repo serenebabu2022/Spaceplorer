@@ -29,11 +29,12 @@ describe("ApodCard", () => {
         <ApodCard {...mockData} />
       </MemoryRouter>
     );
-
   it("renders title, image, and date", () => {
     renderComponent();
 
-    expect(screen.getByText(mockData.title)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Today's Astronomy Picture of the Day:/i)
+    ).toBeInTheDocument();
     expect(screen.getByAltText(mockData.title)).toHaveAttribute(
       "src",
       mockData.url

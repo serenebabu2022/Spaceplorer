@@ -15,7 +15,7 @@ jest.mock("../../components/IPSBarGraph/IPSBarGraph", () => () => (
   <div>Mock IPS Bar Graph</div>
 ));
 
-jest.mock("../../components/SEPChart/SEPLineChart", () => () => (
+jest.mock("../../components/SEPLineChart/SEPLineChart", () => () => (
   <div>Mock SEP Line Chart</div>
 ));
 
@@ -54,7 +54,11 @@ describe("Home Component", () => {
     );
 
     // Wait for the loading text to disappear and the card content to appear
-    expect(await screen.findByText("Test APOD")).toBeInTheDocument();
+    expect(
+      await screen.findByText(
+        `Today's Astronomy Picture of the Day: ${mockApodData.title}`
+      )
+    ).toBeInTheDocument();
     expect(screen.queryByText(/Loading.../i)).not.toBeInTheDocument();
   });
 
