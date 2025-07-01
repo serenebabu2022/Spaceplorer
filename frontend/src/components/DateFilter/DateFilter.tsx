@@ -3,6 +3,7 @@ import React from "react";
 interface DateFilterProps {
   startDate: string;
   endDate: string;
+  maxEndDate?: string;
   onStartDateChange: (date: string) => void;
   onEndDateChange: (date: string) => void;
   onDateRangeChange: (start: string, end: string) => void;
@@ -16,41 +17,22 @@ const DateFilter: React.FC<DateFilterProps> = ({
   onStartDateChange,
   onEndDateChange,
   onDateRangeChange,
+  maxEndDate,
   loading,
   error,
 }) => {
-  const today = new Date().toISOString().split("T")[0];
-
-  // Calculate max end date as 30 days after start
-  const maxEndDate = startDate
-    ? new Date(new Date(startDate).getTime() + 30 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0]
-    : today;
-
   const handleSearch = () => {
     if (!startDate || !endDate) return;
-
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const diffInDays = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-
-    if (diffInDays > 30) {
-      alert("Please select a date range of 30 days or less.");
-      return;
-    }
-
     onDateRangeChange(startDate, endDate);
   };
 
   return (
-    <div className="flex justify-center gap-4 mb-8 flex-wrap">
+    <div className="flex justify-center gap-4 flex-wrap">
       <label className="text-white">
         Start Date:{" "}
         <input
           type="date"
           value={startDate}
-          max={today}
           onChange={(e) => onStartDateChange(e.target.value)}
           className="text-black rounded p-1"
           disabled={loading}

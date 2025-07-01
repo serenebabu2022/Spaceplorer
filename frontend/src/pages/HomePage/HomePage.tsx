@@ -4,6 +4,7 @@ import { fetchApod } from "../../api/api";
 import ApodCard from "../../components/Apod/ApodCard";
 import IPSBarGraph from "../../components/IPSBarGraph/IPSBarGraph";
 import SEPLineChart from "../../components/SEPChart/SEPLineChart";
+import AsteroidsData from "../../components/AsteroidData/AsteroidData";
 
 const Home = () => {
   const [data, setData] = useState<ApodData | null>(null);
@@ -39,6 +40,7 @@ const Home = () => {
           <SEPLineChart />
         </div>
       </div>
+      <AsteroidsData />
     </main>
   );
 };
