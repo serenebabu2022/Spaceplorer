@@ -37,30 +37,25 @@ A full-stack web application that allows users to explore NASA's space data thro
 
 ### APIs Used
 
-- [APOD (Astronomy Picture of the Day)]()
-- [DONKI (Space Weather Notifications, Knowledge, Information)]()
-- [Asteroids - NeoWs (Near Earth Object Web Service)]()
+- [APOD (Astronomy Picture of the Day)](https://api.nasa.gov/)
+- [DONKI (Space Weather Notifications, Knowledge, Information)](https://api.nasa.gov/)
+- [Asteroids - NeoWs (Near Earth Object Web Service)](https://api.nasa.gov/)
 
 ## ✅ Testing
 
-- All components are tested using **Jest** and **React Testing Library**
-- Includes tests for:
-  - API data rendering
-  - Pagination behavior
-  - Interactive components (buttons, inputs, filters)
+All components are tested using Jest and React Testing Library
 
 ## 🧪 How to Run Locally
 
-1. **Clone the repository**
-
+1. **Clone the repository**  
    git clone https://github.com/serenebabu2022/Spaceplorer.git
 
-2. **Setup backend**
-   cd backend
+2. **Setup backend**  
+   cd backend  
    npm install
 
-3. **Setup frontend**
-   cd ../frontend
+3. **Setup frontend**  
+   cd ../frontend  
    npm install
 
 4. **Setup NASA_API_KEY**
@@ -69,16 +64,16 @@ A full-stack web application that allows users to explore NASA's space data thro
    - Create a .env file inside the backend/ directory:
    - NASA_API_KEY=your_nasa_api_key
 
-5. **Run backend**
-   cd backend
+5. **Run backend**  
+   cd backend  
    node index.js
 
-6. **Run frontend**
-   cd frontend
+6. **Run frontend**  
+   cd frontend  
    npm start
 
-7. **Testing**
+7. **Testing**  
    npm test
 
-8. **Test coverage**
+8. **Test coverage**  
    npm run test:coverage
