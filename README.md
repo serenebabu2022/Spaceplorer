@@ -43,7 +43,7 @@ A full-stack web application that allows users to explore NASA's space data thro
 
 ## ✅ Testing
 
-    All components are tested using Jest and React Testing Library
+All components are tested using Jest and React Testing Library
 
 ## 🧪 How to Run Locally
 
