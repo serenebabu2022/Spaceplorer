@@ -43,19 +43,19 @@ A full-stack web application that allows users to explore NASA's space data thro
 
 ## ✅ Testing
 
-    All components are tested using **Jest** and **React Testing Library**
+    All components are tested using Jest and React Testing Library
 
 ## 🧪 How to Run Locally
 
-1. **Clone the repository**
+1. **Clone the repository**  
    git clone https://github.com/serenebabu2022/Spaceplorer.git
 
 2. **Setup backend**  
-   cd backend
+   cd backend  
    npm install
 
 3. **Setup frontend**  
-   cd ../frontend
+   cd ../frontend  
    npm install
 
 4. **Setup NASA_API_KEY**
@@ -65,11 +65,11 @@ A full-stack web application that allows users to explore NASA's space data thro
    - NASA_API_KEY=your_nasa_api_key
 
 5. **Run backend**  
-   cd backend
+   cd backend  
    node index.js
 
 6. **Run frontend**  
-   cd frontend
+   cd frontend  
    npm start
 
 7. **Testing**  
