@@ -84,6 +84,46 @@ app.get("/api/DONKI/SEP", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch SEP Data" });
   }
 });
+app.get("/api/asteroidList", async (req, res) => {
+  const { start_date, end_date } = req.query;
+  try {
+    const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?`, {
+      params: {
+        api_key: NASA_API_KEY,
+        start_date: start_date,
+        end_date: end_date,
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching Asteroid Data:", error.message);
+    res.status(500).json({ error: "Failed to fetch Asteroid Data" });
+  }
+});
+
+app.get("/api/asteroid:id", async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).json({ error: "Asteroid ID is required" });
+  }
+  try {
+    const response = await axios.get(
+      `https://api.nasa.gov/neo/rest/v1/neo/${id}`,
+      {
+        params: {
+          api_key: NASA_API_KEY,
+        },
+      }
+    );
+    res.json(response.data);
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
+      return res.status(404).json({ error: "Asteroid not found." });
+    }
+    res.status(500).json({ error: "Failed to fetch asteroid data." });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
