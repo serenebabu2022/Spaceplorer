@@ -1,8 +1,6 @@
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { useDonkiData } from "../../hooks/useDonkiData";
 import SEPLineChart from "./SEPLineChart";
-import * as api from "../../api/api";
 
 // Mock the useDonkiData hook
 jest.mock("../../hooks/useDonkiData");
@@ -11,7 +9,6 @@ jest.mock("../../hooks/useDonkiData");
 jest.mock("../../api/api", () => ({
   fetchIPSEvents: jest.fn(),
 }));
-const mockFetchApod = api.fetchIPSEvents as jest.Mock;
 
 const mockUseDonkiData = useDonkiData as jest.Mock;
 jest.mock("recharts", () => {
