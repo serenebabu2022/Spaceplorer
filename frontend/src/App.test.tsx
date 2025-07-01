@@ -9,6 +9,14 @@ jest.mock("./api/api", () => ({
 }));
 const mockFetchApod = api.fetchApod as jest.Mock;
 
+jest.mock("./components/IPSBarGraph/IPSBarGraph", () => () => (
+  <div>Mock IPSBarGraph</div>
+));
+
+jest.mock("./components/SEPChart/SEPLineChart", () => () => (
+  <div>Mock SEPLineChart</div>
+));
+
 describe("App Component", () => {
   const mockApodData = {
     title: "Test APOD",
