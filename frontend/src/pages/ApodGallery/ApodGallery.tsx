@@ -18,50 +18,47 @@ const ApodGallery = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchDefaultRange = async () => {
-      const end = new Date();
-      const start = new Date();
-      start.setDate(end.getDate() - 7); // last 8 days including today
+  const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
 
-      const startStr = start.toISOString().split("T")[0];
-      const endStr = end.toISOString().split("T")[0];
+  const fetchAPODForDateRange = async (startStr: string, endStr: string) => {
+    setError(""); // Reset error state
+    const startTime = new Date(startStr).getTime();
+    const endTime = new Date(endStr).getTime();
+    const diffDays = (endTime - startTime) / (1000 * 60 * 60 * 24);
 
-      setStartDate(startStr);
-      setEndDate(endStr);
-      setLoading(true);
-      try {
-        const res = await fetchApodRange(startStr, endStr);
-        if (res.data.length === 0) {
-          setError("No photos available for this date range.");
-          setData([]);
-        } else {
-          setData(res.data);
-        }
-      } catch {
-        setError("Failed to load recent images.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDefaultRange();
-  }, []);
-
-  const handleDateRangeChange = async (start: string, end: string) => {
-    setStartDate(start);
-    setEndDate(end);
-    setError("");
+    if (diffDays > 30) {
+      setError("Please select a date range of 30 days or less.");
+      return;
+    }
+    if (diffDays < 0) {
+      setError("End date must be after start date.");
+      return;
+    }
     setLoading(true);
     try {
-      const res = await fetchApodRange(start, end);
-      setData(res.data);
+      const res = await fetchApodRange(startStr, endStr);
+      if (res.data.length === 0) {
+        setError("No photos available for this date range.");
+        setData([]);
+      } else {
+        setData(res.data);
+      }
     } catch {
-      setError("Failed to fetch data.");
+      setError("Failed to load recent images.");
     } finally {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    const end = new Date();
+    const start = new Date();
+    start.setDate(end.getDate() - 7); // last 8 days including today
+
+    const startStr = start.toISOString().split("T")[0];
+    const endStr = end.toISOString().split("T")[0];
+
+    fetchAPODForDateRange(startStr, endStr); // assuming this takes (startDate, endDate)
+  }, []);
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
@@ -69,9 +66,10 @@ const ApodGallery = () => {
       <DateFilter
         startDate={startDate}
         endDate={endDate}
+        maxEndDate={today}
         onStartDateChange={setStartDate}
         onEndDateChange={setEndDate}
-        onDateRangeChange={handleDateRangeChange}
+        onDateRangeChange={fetchAPODForDateRange}
         loading={loading}
         error={error}
       />
