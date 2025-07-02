@@ -13,7 +13,7 @@ const ApodCard: React.FC<ApodProps> = ({ title, url, explanation, date }) => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8  rounded-lg text-white">
+    <div className="max-w-3xl mx-auto px-2 sm:px-6 lg:px-8  rounded-lg text-white">
       <h3 className="text-2xl text-center mb-6">
         Today's Astronomy Picture of the Day: {title}
       </h3>

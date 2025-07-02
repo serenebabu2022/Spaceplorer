@@ -1,6 +1,5 @@
-import { renderHook, act } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 import { useDonkiData } from "./useDonkiData";
-import { waitFor } from "@testing-library/react";
 
 describe("useDonkiData hook", () => {
   const mockFetchFn = jest.fn();

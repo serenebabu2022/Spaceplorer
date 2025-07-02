@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import ApodGallery from "./ApodGallery";
 import * as api from "../../api/api";

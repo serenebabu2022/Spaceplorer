@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { AsteroidData } from "../../types/interfaces";
 import { fetchAsteroidList, searchAsteroid } from "../../api/api";

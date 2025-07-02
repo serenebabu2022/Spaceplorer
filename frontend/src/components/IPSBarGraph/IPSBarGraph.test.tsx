@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 
 /* eslint-disable import/first */
