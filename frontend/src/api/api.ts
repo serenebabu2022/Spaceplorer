@@ -6,7 +6,9 @@ import {
   SEPData,
 } from "../types/interfaces";
 import { IPSData } from "../types/interfaces";
-const API_BASE = "http://localhost:5000/api";
+
+const API_BASE =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api";
 
 export const fetchApod = () => axios.get<ApodData>(`${API_BASE}/apod`);
 
