@@ -10,12 +10,17 @@ body,
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-size: cover;
-  background-color: #0f172a; /* fallback dark navy */
-  color: white; /* text color for contrast */
   min-height: 100vh;
   margin: 0;
   font-family: "Inter", sans-serif;
+  background-image: url("../public/images/backgroundimg.jpg");
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: auto;
+  background-color: #000;
+  color: white;
+  overflow-x: hidden;
 }
 
 code {

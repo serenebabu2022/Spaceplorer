@@ -47,7 +47,7 @@ const SEPLineChart = () => {
   const today = new Date();
 
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-3xl bg-black shadow-lg rounded-lg p-6">
       <h1 className="text-2xl font-bold mb-4">
         Solar Energetic Particle Events
       </h1>

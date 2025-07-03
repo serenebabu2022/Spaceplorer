@@ -53,7 +53,7 @@ const DateFilter: React.FC<DateFilterProps> = ({
       <button
         onClick={handleSearch}
         name="filter"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-blue-700"
         disabled={loading}
       >
         {loading ? "Loading..." : "Submit"}

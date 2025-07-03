@@ -61,7 +61,7 @@ const ApodGallery = () => {
   }, []);
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-6 max-w-7xl mx-auto pt-[96px]">
       <h1 className="text-4xl font-bold mb-8 text-center">Explore Gallery</h1>
       <DateFilter
         startDate={startDate}
@@ -73,7 +73,7 @@ const ApodGallery = () => {
         loading={loading}
         error={error}
       />
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-8">
         {data.map((photo) => (
           <div
             key={photo.date}

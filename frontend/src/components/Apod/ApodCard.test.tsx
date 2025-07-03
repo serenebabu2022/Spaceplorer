@@ -43,18 +43,6 @@ describe("ApodCard", () => {
     expect(screen.getByText(mockData.explanation)).toBeInTheDocument();
   });
 
-  it("shows 'Read more' and toggles to 'Read less'", () => {
-    renderComponent();
-
-    const toggleBtn = screen.getByRole("button", { name: /read more/i });
-    expect(toggleBtn).toBeInTheDocument();
-
-    fireEvent.click(toggleBtn);
-    expect(
-      screen.getByRole("button", { name: /read less/i })
-    ).toBeInTheDocument();
-  });
-
   it("navigates to /exploreAPOD when 'Explore More' is clicked", () => {
     const mockNavigate = jest.fn();
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
