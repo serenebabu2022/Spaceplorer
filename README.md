@@ -2,7 +2,13 @@
 
 A full-stack web application that allows users to explore NASA's space data through a modern and responsive React frontend connected to a Node.js + Express backend. Users can view stunning space imagery, explore asteroid data, and analyze space weather events using interactive visualizations, all powered by NASA’s Open APIs.
 
-## 🚀 Features
+## 🚀 Deployment
+
+App deployed at https://spaceplorer-ijto.onrender.com/
+
+Frontend and backend is deployed seperately on [Render](https://render.com/)
+
+## 📦 Features
 
 ### 🖼 Astronomy Picture of the Day (APOD)
 
@@ -77,3 +83,11 @@ All components are tested using Jest and React Testing Library
 
 8. **Test coverage**  
    npm run test:coverage
+
+## Future Works - Data Optimisation
+
+- NASA APIs have a limiation that it only allows 1000 requests per hour, which is not suitable for production
+- Implement persistent storage by saving the data in a database such as Amazon DynamoDB for efficient and scalable querying.
+- Set up a cloud-based data pipeline to keep the dataset up to date. For example, use a scheduled AWS cron job (CloudWatch Events) to fetch data daily from NASA APIs and store it in an Amazon S3 bucket, creating a reliable data lake.
+- Record logs for successful data pulls and errors to maintain visibility into the pipeline’s health and track processing dates.
+- Develop an AWS Lambda function to process and store the data from the S3 data lake into DynamoDB, enabling faster and easier queries.
