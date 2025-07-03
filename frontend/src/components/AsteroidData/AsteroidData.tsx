@@ -89,7 +89,7 @@ const AsteroidsData = () => {
   };
 
   return (
-    <div className="overflow-x-auto p-4">
+    <div className="overflow-x-auto p-4 bg-black shadow-lg rounded-lg p-6">
       <h2 className="text-xl font-semibold mb-2">
         Asteroids Approaching Earth
       </h2>
@@ -105,7 +105,7 @@ const AsteroidsData = () => {
           />
           <button
             onClick={handleSearchById}
-            className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600"
+            className="bg-gray-700 text-white px-4 py-1 rounded hover:bg-blue-600"
           >
             Search
           </button>

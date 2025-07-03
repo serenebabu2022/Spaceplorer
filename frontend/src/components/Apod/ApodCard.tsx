@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ApodData } from "../../types/interfaces";
 
 interface ApodProps extends ApodData {}
 
-const ApodCard: React.FC<ApodProps> = ({ title, url, explanation, date }) => {
-  const [expanded, setExpanded] = useState(false);
+const ApodCard: React.FC<ApodProps> = ({
+  title,
+  url,
+  explanation,
+  date,
+  copyright,
+}) => {
+  // const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
   const handleExploreMore = () => {
@@ -13,34 +19,35 @@ const ApodCard: React.FC<ApodProps> = ({ title, url, explanation, date }) => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-2 sm:px-6 lg:px-8  rounded-lg text-white">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-10 lg:px-12 bg-black shadow-xl rounded-xl py-10 text-white">
       <h3 className="text-2xl text-center mb-6">
         Today's Astronomy Picture of the Day: {title}
       </h3>
       <div className="flex flex-col md:flex-row gap-8 items-start">
-        <img
-          src={url}
-          alt={title}
-          className="md:w-1/2 w-full object-cover rounded-lg shadow-md max-h-[500px]"
-        />
-        <div className="md:w-1/2 w-full flex flex-col">
+        <div className="lg:w-2/3 w-full">
+          <img
+            src={url}
+            alt={title}
+            className="w-full h-full object-cover rounded-lg shadow-md max-h-[500px]"
+          />
+        </div>
+        <div className="md:w-1/3 w-full flex flex-col justify-between">
           <p
-            className={`text-base transition-all duration-300 ease-in-out overflow-hidden ${
-              expanded ? "max-h-none" : "max-h-[15rem]" /* ~5 lines */
-            }`}
+            className="italic font-serif text-gray-200 text-base leading-relaxed"
             style={{ lineHeight: "1.5rem" }}
           >
             {explanation}
           </p>
-          <button
-            className="mt-4 text-blue-400 hover:text-blue-600 self-start"
-            onClick={() => setExpanded((prev) => !prev)}
-          >
-            {expanded ? "Read less" : "Read more"}
-          </button>
+          {copyright && (
+            <p className="text-sm text-gray-400 italic text-right mt-4">
+              📷 Credits: {copyright}
+            </p>
+          )}
+
+          <p className="mt-6 text-sm text-gray-400 text-right">📅 {date}</p>
         </div>
       </div>
-      <p className="mt-6 text-sm text-gray-400 text-right">📅 {date}</p>
+
       <div className="flex justify-center mt-8">
         <button
           className="px-6 py-3 bg-gray-700 hover:bg-blue-900 rounded-md text-white font-semibold transition"

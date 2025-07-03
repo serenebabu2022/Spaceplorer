@@ -48,7 +48,7 @@ const IPSBarGraph = () => {
   const today = new Date();
 
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-3xl bg-black shadow-lg rounded-lg p-6">
       <h1 className="text-2xl font-bold mb-4">Inter Planetory Shock</h1>
       <p>
         Check out the chart below to see data of actual IPS events captured in

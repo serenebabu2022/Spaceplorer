@@ -3,6 +3,7 @@ export interface ApodData {
   url: string;
   explanation: string;
   date: string;
+  copyright?: string;
 }
 export interface Instrument {
   displayName: string;
