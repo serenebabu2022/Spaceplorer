@@ -33,7 +33,7 @@ const ApodCard: React.FC<ApodProps> = ({
         </div>
         <div className="md:w-1/3 w-full flex flex-col justify-between">
           <p
-            className="italic font-serif text-gray-200 text-base leading-relaxed"
+            className="text-gray-200 text-base leading-relaxed text-justify"
             style={{ lineHeight: "1.5rem" }}
           >
             {explanation}
