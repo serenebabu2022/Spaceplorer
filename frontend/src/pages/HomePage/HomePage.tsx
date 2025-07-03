@@ -51,7 +51,7 @@ const Home = () => {
         </div>
       </section>
       <main className="min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 mt-16 justify-center">
-        <div className="flex flex-col lg:flex-row gap-10 mb-4 items-start sm:mb-12">
+        <div className="flex flex-col lg:flex-row gap-10 mb-4 items-start">
           <div className="lg:max-w-[25vw] w-full text-white flex flex-col justify-between mt-4 bg-black shadow-lg rounded-lg p-4">
             <h2 className="text-4xl font-semibold mb-4">
               Explore the Cosmos With Us
