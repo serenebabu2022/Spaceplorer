@@ -7,37 +7,32 @@ const cardData = [
     title: "Astronomy Picture of the Day",
     image: "/images/apod.jpg",
     redirect: "#apod",
-    redirectContent: "Explore today's breathtaking view of the cosmos",
     description:
-      "See today’s featured cosmic wonder. Developed by NASA astronomers, the Astronomy Picture of the Day (APOD) features the largest online collection of annotated astronomical images.",
+      "Today’s featured cosmic wonder. Developed by NASA, APOD features the largest online collection of annotated astronomical images.",
   },
   {
     id: 2,
-    title: "Interplanetary Shocks can cause aurora",
+    title: "Interplanetary Shocks",
     image: "/images/aurora.jpg",
     redirect: "#IPS",
-    redirectContent: "Look at the IPS data over this year",
     description:
-      "Shockwaves triggered by powerful bursts of solar energy that can shake up the solar wind, rattle Earth’s magnetic field, and sometimes lead to dazzling auroras.",
+      "Shockwaves triggered by powerful bursts of solar energy that shake up solar wind, rattle Earth’s magnetic field, and can even lead to auroras.",
   },
   {
     id: 3,
     title: "Solar Energetic Particle Events",
     image: "/images/SEP.jpg",
     redirect: "#SEP",
-    redirectContent: "Look at the SEP Events data over this year",
     description:
-      "These particles travel at nearly the speed of light, reaching Earth in minutes! While invisible to our eyes, they can disrupt satellites, GPS, and even airline communications.",
+      "They travel at nearly the speed of light, reaching Earth in minutes! While invisible to us, they can disrupt satellites, GPS, and airline communications.",
   },
   {
     id: 4,
     title: "Asteroids Near Earth",
     image: "images/asteroid.jpg",
     redirect: "#asteroids",
-    redirectContent:
-      "Learn about the asteroids that are approaching Earth over this week",
     description:
-      "Explore close approaches and track potential hazards. Learn about past and future asteroid encounters with Earth.",
+      "These small, rocky, airless remnants can approach close and cause potential hazards. Check out the asteroid encounters with Earth.",
   },
 ];
 
@@ -78,7 +73,8 @@ export default function AutoAnimateCards() {
       style={{
         position: "relative",
         margin: 0,
-        overflow: "visible",
+        overflow: "hidden",
+        height: "100%",
       }}
     >
       {cardData.map((card, i) => (
@@ -109,19 +105,13 @@ export default function AutoAnimateCards() {
           <img
             src={card.image}
             alt={card.title}
-            style={{
-              width: "100%",
-              height: "200px",
-              objectFit: "cover",
-              borderRadius: "12px",
-              marginBottom: "1rem",
-            }}
+            className="w-full h-36 sm:h-44 md:h-52 object-cover rounded-xl mb-4"
           />
-          <div className="p-4" style={{ textAlign: "center" }}>
-            <h2 style={{ fontSize: "1.2rem", marginBottom: "0.5rem" }}>
+          <div className="p-3 sm:p-4 text-center">
+            <h2 className="text-base sm:text-lg md:text-xl mb-2">
               {card.title}
             </h2>
-            <p style={{ fontSize: "0.95rem", color: "#333" }}>
+            <p className="text-sm sm:text-base text-gray-700">
               {card.description}
             </p>
             <a
@@ -139,7 +129,7 @@ export default function AutoAnimateCards() {
               onMouseEnter={(e) => (e.currentTarget.style.color = "#004999")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#0066cc")}
             >
-              → {card.redirectContent}
+              → Learn more
             </a>
           </div>
         </motion.div>

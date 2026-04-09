@@ -64,7 +64,7 @@ const Home = () => {
               All data is powered by NASA’s open APIs
             </p>
           </div>
-          <div className="px-4 w-full h-[420px] sm:h-[480px] md:h-[500px] lg:h-[520px] overflow-y-auto">
+          <div className="px-4 w-full h-[440px] min-[400px]:h-[420px] min-[540px]:h-[380px] sm:h-[480px] md:h-[460px] lg:h-[500px]">
             <AutoAnimateCards />
           </div>
         </div>
