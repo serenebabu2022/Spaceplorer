@@ -14,6 +14,8 @@ const AsteroidsData = () => {
   const [endDate, setEndDate] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [searchError, setSearchError] = useState("");
+  const [searchLoading, setSearchLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [showOnlyHazardous, setShowOnlyHazardous] = useState(false);
 
@@ -63,17 +65,17 @@ const AsteroidsData = () => {
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   const handleSearchById = async () => {
     if (!searchTerm.trim()) {
-      // If search input is empty, reload default data
-      fetchData();
+      // If search input is empty, set error
+      setSearchError("Search input cannot be empty");
       return;
     }
-    setLoading(true);
-    setError("");
+    setSearchLoading(true);
+    setSearchError("");
 
     try {
       const response = await searchAsteroid(searchTerm.trim());
@@ -81,10 +83,11 @@ const AsteroidsData = () => {
       setData([asteroids]);
       setStartDate("");
       setEndDate("");
+      setSearchError("");
     } catch (err) {
-      setError("Asteroid not found. Please check the SPK-ID.");
+      setSearchError("Asteroid not found. Please check the SPK-ID.");
     } finally {
-      setLoading(false);
+      setSearchLoading(false);
     }
   };
 
@@ -95,20 +98,30 @@ const AsteroidsData = () => {
       </h2>
       <h6>Find the asteroids coming close to earth for a period of 1 week</h6>
       <div className="flex flex-col md:flex-row md:items-end my-8 justify-between">
-        <div className="flex gap-2">
+        <div className="relative flex gap-2">
           <input
             type="text"
             placeholder="Search by ID of an Asteroid"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 border border-gray-300 rounded text-gray-800"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setSearchError("");
+            }}
+            className={`p-2 border rounded text-gray-800 ${
+              searchError ? "border-red-500" : "border-gray-300"
+            }`}
           />
           <button
             onClick={handleSearchById}
             className="bg-gray-700 text-white px-4 py-1 rounded hover:bg-blue-600"
           >
-            Search
+            {searchLoading ? "Loading" : "Search"}
           </button>
+          {searchError && (
+            <div className="absolute left-0 top-full mt-2 z-10 rounded-md border border-red-500 bg-white px-3 py-2 text-sm text-red-500 shadow-md whitespace-nowrap">
+              {searchError}
+            </div>
+          )}
         </div>
         <DateFilter
           startDate={startDate}
@@ -118,7 +131,7 @@ const AsteroidsData = () => {
           maxEndDate={
             startDate
               ? new Date(
-                  new Date(startDate).getTime() + 7 * 24 * 60 * 60 * 1000
+                  new Date(startDate).getTime() + 7 * 24 * 60 * 60 * 1000,
                 )
                   .toISOString()
                   .split("T")[0]
@@ -185,16 +198,16 @@ const AsteroidsData = () => {
                 </td>
                 <td className="border px-2 py-1">
                   {Number(
-                    approach.relative_velocity.kilometers_per_second
+                    approach.relative_velocity.kilometers_per_second,
                   ).toFixed(2)}
                 </td>
                 <td className="border px-2 py-1">
                   {Number(
-                    a.estimated_diameter.meters.estimated_diameter_min
+                    a.estimated_diameter.meters.estimated_diameter_min,
                   ).toFixed(1)}{" "}
                   -{" "}
                   {Number(
-                    a.estimated_diameter.meters.estimated_diameter_max
+                    a.estimated_diameter.meters.estimated_diameter_max,
                   ).toFixed(1)}
                 </td>
                 <td className="border px-2 py-1 text-center">

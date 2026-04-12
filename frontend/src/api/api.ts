@@ -36,5 +36,5 @@ export const fetchAsteroidList = (start_date?: string, end_date?: string) => {
 };
 
 export const searchAsteroid = (asteroidID: string) => {
-  return axios.get<AsteroidData>(`${API_BASE}/asteroid:${asteroidID}`);
+  return axios.get<AsteroidData>(`${API_BASE}/asteroid/${asteroidID}`);
 };
