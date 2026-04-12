@@ -11,7 +11,7 @@ const NASA_API_KEY = process.env.NASA_API_KEY;
 app.get("/api/apod", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`
+      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`,
     );
     res.json(response.data);
   } catch (error) {
@@ -102,7 +102,7 @@ app.get("/api/asteroidList", async (req, res) => {
   }
 });
 
-app.get("/api/asteroid/:id", async (req, res) => {
+app.get("/api/asteroid/id", async (req, res) => {
   const { id } = req.params;
   if (!id) {
     return res.status(400).json({ error: "Asteroid ID is required" });
@@ -114,7 +114,7 @@ app.get("/api/asteroid/:id", async (req, res) => {
         params: {
           api_key: NASA_API_KEY,
         },
-      }
+      },
     );
     res.json(response.data);
   } catch (error) {
