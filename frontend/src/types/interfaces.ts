@@ -1,6 +1,6 @@
 export interface ApodData {
   title: string;
-  url: string;
+  hdurl: string;
   explanation: string;
   date: string;
   copyright?: string;
@@ -56,6 +56,6 @@ export interface AsteroidData {
         kilometers: string;
       };
       is_sentry_object: boolean;
-    }
+    },
   ];
 }

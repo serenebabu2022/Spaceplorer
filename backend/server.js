@@ -11,9 +11,9 @@ const NASA_API_KEY = process.env.NASA_API_KEY;
 app.get("/api/apod", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`,
+      `https://science.nasa.gov/wp-json/wp/v2/apod-basic/?api_key=${NASA_API_KEY}`,
     );
-    res.json(response.data);
+    res.json(response.data[0]);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch APOD data" });
   }
@@ -27,13 +27,16 @@ app.get("/api/apod/range", async (req, res) => {
   }
 
   try {
-    const response = await axios.get(`https://api.nasa.gov/planetary/apod`, {
-      params: {
-        api_key: NASA_API_KEY,
-        start_date: start,
-        end_date: end,
+    const response = await axios.get(
+      `https://science.nasa.gov/wp-json/wp/v2/apod-basic`,
+      {
+        params: {
+          api_key: NASA_API_KEY,
+          start_date: start,
+          end_date: end,
+        },
       },
-    });
+    );
 
     res.json(response.data);
   } catch (error) {
