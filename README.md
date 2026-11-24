@@ -65,14 +65,13 @@ All components are tested using Jest and React Testing Library
    npm install
 
 4. **Setup NASA_API_KEY**
-
    - Obtain API_KEY from NASA's website: https://api.nasa.gov/
    - Create a .env file inside the backend/ directory:
    - NASA_API_KEY=your_nasa_api_key
 
 5. **Run backend**  
    cd backend  
-   node index.js
+   node server.js
 
 6. **Run frontend**  
    cd frontend  

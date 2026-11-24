@@ -6,7 +6,7 @@ import DateFilter from "../../components/DateFilter/DateFilter";
 interface Photo {
   date: string;
   title: string;
-  url: string;
+  hdurl: string;
   explanation: string;
 }
 
@@ -81,7 +81,7 @@ const ApodGallery = () => {
             onClick={() => setSelectedPhoto(photo)}
           >
             <img
-              src={photo.url}
+              src={photo.hdurl}
               alt={photo.title}
               className="w-full h-48 object-cover"
               loading="lazy"
@@ -115,7 +115,7 @@ const ApodGallery = () => {
             </button>
 
             <img
-              src={selectedPhoto.url}
+              src={selectedPhoto.hdurl}
               alt={selectedPhoto.title}
               className="w-full h-96 object-cover"
             />

@@ -14,13 +14,13 @@ const mockPhotos: ApodData[] = [
   {
     date: "2025-06-18",
     title: "Nebula",
-    url: "https://example.com/image1.jpg",
+    hdurl: "https://example.com/image1.jpg",
     explanation: "A stunning nebula in space.",
   },
   {
     date: "2025-06-19",
     title: "Galaxy",
-    url: "https://example.com/image2.jpg",
+    hdurl: "https://example.com/image2.jpg",
     explanation: "A beautiful galaxy.",
   },
 ];
@@ -33,7 +33,7 @@ describe("ApodGallery", () => {
 
   it("renders loading state initially", async () => {
     mockFetchApodRange.mockImplementation(
-      () => new Promise(() => {}) // Keep it in loading state
+      () => new Promise(() => {}), // Keep it in loading state
     );
 
     render(<ApodGallery />);
@@ -76,7 +76,7 @@ describe("ApodGallery", () => {
     // Close modal
     fireEvent.click(screen.getByLabelText("Close"));
     expect(
-      screen.queryByText(mockPhotos[0].explanation)
+      screen.queryByText(mockPhotos[0].explanation),
     ).not.toBeInTheDocument();
   });
 });

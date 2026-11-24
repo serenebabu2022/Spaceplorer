@@ -18,7 +18,7 @@ jest.mock("react-router-dom", () => {
 describe("ApodCard", () => {
   const mockData = {
     title: "Astronomy Picture of the Day",
-    url: "https://testpic.com/image.jpg",
+    hdurl: "https://testpic.com/image.jpg",
     explanation: "This is a long explanation about the astronomical event.",
     date: "2025-06-24",
   };
@@ -27,17 +27,17 @@ describe("ApodCard", () => {
     render(
       <MemoryRouter>
         <ApodCard {...mockData} />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
   it("renders title, image, and date", () => {
     renderComponent();
 
     expect(
-      screen.getByText(/Today's Astronomy Picture of the Day:/i)
+      screen.getByText(/Today's Astronomy Picture of the Day:/i),
     ).toBeInTheDocument();
     expect(screen.getByAltText(mockData.title)).toHaveAttribute(
       "src",
-      mockData.url
+      mockData.hdurl,
     );
     expect(screen.getByText(/2025-06-24/)).toBeInTheDocument();
     expect(screen.getByText(mockData.explanation)).toBeInTheDocument();
